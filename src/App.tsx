@@ -5,6 +5,7 @@ import Dashboard from './pages/Dashboard';
 import { useAppDispatch, useAppSelector } from './app/hooks';
 import  { useState, useEffect } from 'react';
 import ThemeSelector from './components/ThemeSelector';
+import CreateMeeting from './pages/CreateMeeting';
 
 
 const App = () => {
@@ -44,6 +45,7 @@ const App = () => {
         <EuiThemeProvider modify={overrides}>
           <Routes>
             <Route path="/login" element={<Login/>}/>
+            <Route path="/create" element={<CreateMeeting/>}/>
             <Route path="/" element={<Dashboard />} />
             <Route path="*" element={<Dashboard />} />
           </Routes>
