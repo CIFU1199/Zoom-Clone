@@ -11,17 +11,27 @@ import {  EuiButton,
           EuiTextColor } from '@elastic/eui';
 import { signOut } from 'firebase/auth';
 import { firebaseAuth } from '../utils/FireBaseConfig';
+import { changeTheme } from '../app/slices/AuthSlice';
 
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const username = useAppSelector((zoom) => zoom.auth.userInfo?.name);
+  const isDarkTheme = useAppSelector((zoom)=> zoom.auth.isDarkTheme);
   const [breadCrumbs, setBreadCrumbs] = useState([{text: "Dashboard"}]);
   const [isResponsive, setIsResponsive] = useState(false);
   const dispatch = useDispatch();
   const logout = () =>{
     signOut(firebaseAuth);
   }
+
+  const invertTheme = () =>{
+    const theme = localStorage.getItem("zoom-theme");
+    localStorage.setItem("zoom-theme" , theme === "light" ? "dark" : "light" );
+    dispatch(changeTheme({isDarkTheme: !isDarkTheme}))
+  }
+
+
 
   const section = [{
     items:[
@@ -57,37 +67,42 @@ const Header = () => {
         >
 
         <EuiFlexItem grow={false} style={{ flexBasis: "fit-content" }}>
-        <EuiButton 
-            onClick={logout}
-            color='warning'
-            fill
-            size="s"
-          > Dia </EuiButton>
 
-          <EuiButton 
-            onClick={logout}
-            color='ghost'
-            fill
-            size="s"
-          > Noche </EuiButton>
+          {isDarkTheme ? (
+            <EuiButton 
+              onClick={invertTheme}
+              color='warning'
+              fill
+              size="s"
+            > Dia </EuiButton>
+          ) : (
+            <EuiButton 
+              onClick={invertTheme}
+              color='ghost'
+              fill
+              size="s"
+            > Noche </EuiButton>
+          )
+
+          }
 
            {/* <EuiButtonIcon
-                onClick={logout}
+                onClick={invertTheme}
                 iconType="sun"
                 color='warning'
                 display="fill"
                 size="s"
-                aria-label="logout-button"
+                aria-label="invert-theme-button"
               />
           
 
           <EuiButtonIcon      
-                onClick={logout}
-                iconType="help"
+                onClick={invertTheme}
+                iconType="moon"
                 display="fill"
                 color='ghost'
                 size="s"
-                aria-label="Help"
+                aria-label="invert-theme-button"
               /> */}  
           </EuiFlexItem>
 
@@ -121,6 +136,72 @@ const Header = () => {
               </h2>
             </EuiText>
         </Link>
+      ]
+    },{
+      items:[
+        <EuiFlexGroup
+            justifyContent="center"
+            alignItems="center"
+            direction="row"
+            style={{ gap: "2vw" }}
+          >
+  
+          <EuiFlexItem grow={false} style={{ flexBasis: "fit-content" }}>
+  
+            {isDarkTheme ? (
+              <EuiButton 
+                onClick={invertTheme}
+                color='warning'
+                fill
+                size="s"
+              > Dia </EuiButton>
+            ) : (
+              <EuiButton 
+                onClick={invertTheme}
+                color='ghost'
+                fill
+                size="s"
+              > Noche </EuiButton>
+            )
+  
+            }
+  
+             {/* <EuiButtonIcon
+                  onClick={invertTheme}
+                  iconType="sun"
+                  color='warning'
+                  display="fill"
+                  size="s"
+                  aria-label="invert-theme-button"
+                />
+            
+  
+            <EuiButtonIcon      
+                  onClick={invertTheme}
+                  iconType="moon"
+                  display="fill"
+                  color='ghost'
+                  size="s"
+                  aria-label="invert-theme-button"
+                /> */}  
+            </EuiFlexItem>
+  
+          <EuiFlexItem grow={false} style={{ flexBasis: "fit-content" }}>
+            <EuiButton 
+              onClick={logout}
+              fill
+              size="s"
+            > Salir </EuiButton>
+              {/* 
+              <EuiButtonIcon
+                onClick={logout}
+                iconType="lock"
+                display="fill"
+                size="s"
+                aria-label="logout-button"
+                /> */}
+          </EuiFlexItem>
+        </EuiFlexGroup>
       ]
     }
   ];
