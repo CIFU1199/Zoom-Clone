@@ -12,6 +12,7 @@ import {  EuiButton,
 import { signOut } from 'firebase/auth';
 import { firebaseAuth } from '../utils/FireBaseConfig';
 import { changeTheme } from '../app/slices/AuthSlice';
+import { getCreateMeetingBreadCrumbs, getOneonOneMeetingsBreadCrumbs } from '../utils/breadCrumbs';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -24,6 +25,15 @@ const Header = () => {
   const logout = () =>{
     signOut(firebaseAuth);
   }
+
+
+
+  useEffect(() => {
+    const {pathname} = location;
+    if(pathname === "/create") 
+      setBreadCrumbs(getCreateMeetingBreadCrumbs(navigate));
+    else if(pathname ==="/create1on1") setBreadCrumbs(getOneonOneMeetingsBreadCrumbs(navigate))
+  }, [location, navigate])
 
   const invertTheme = () =>{
     const theme = localStorage.getItem("zoom-theme");

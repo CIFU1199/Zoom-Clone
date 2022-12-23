@@ -1,10 +1,29 @@
 import { NavigateFunction } from "react-router-dom"
+import { BreadCrumbsType } from './Types';
 
-export const getCreateMeetingBreadCrumbs = (navigate:NavigateFunction) => [
+export const getCreateMeetingBreadCrumbs = (
+    navigate:NavigateFunction) : Array<BreadCrumbsType> => [
     {
         text:"Dashboard",
         href:"#",
         onClick:()=>{navigate("/")}
     },
     {text:"Crear Reunión"}
+]
+
+export const getOneonOneMeetingsBreadCrumbs= (
+    navigate:NavigateFunction) : Array<BreadCrumbsType> => [
+    {
+        text:"Dashboard",
+        href:"#",
+        onClick:()=>{navigate("/")}
+    },
+    {
+        text:"Crear Reunión",
+        href:"#",
+        onClick:()=>{navigate("/create")}
+    },
+    {
+        text:"Crear Reunión 1 a 1",
+    }
 ]
