@@ -1,4 +1,4 @@
-import { EuiProvider, EuiThemeColorMode, EuiThemeProvider } from '@elastic/eui';
+import { EuiGlobalToastList, EuiProvider, EuiThemeColorMode, EuiThemeProvider } from '@elastic/eui';
 import {Route, Routes} from 'react-router-dom'; 
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
@@ -6,11 +6,14 @@ import { useAppDispatch, useAppSelector } from './app/hooks';
 import  { useState, useEffect } from 'react';
 import ThemeSelector from './components/ThemeSelector';
 import CreateMeeting from './pages/CreateMeeting';
+import OneOnOneMeeting from './pages/OneOnOneMeeting';
+import { setToasts } from './app/slices/MeetingSlice';
 
 
 const App = () => {
 
   const dispatch = useAppDispatch();
+  const toasts = useAppSelector((zoom) => zoom.meeting.toasts);
   const isDarkTheme = useAppSelector((zoom)=> zoom.auth.isDarkTheme);
   const [theme, setTheme] = useState<EuiThemeColorMode>("light");
   const [isInitialTheme, setIsInitialTheme] = useState(true);
@@ -38,6 +41,11 @@ const App = () => {
       DARK:{primary: "#0b5cff"},
     }
   }
+  const removeToast = (removeToast:{id: string}) =>{
+    dispatch(setToasts(
+      toasts.filter((toast:{id:string})=> toast.id == removeToast.id)
+    ))
+  }
 
   return (
     <ThemeSelector>
@@ -46,9 +54,15 @@ const App = () => {
           <Routes>
             <Route path="/login" element={<Login/>}/>
             <Route path="/create" element={<CreateMeeting/>}/>
+            <Route path="/create1on1" element={<OneOnOneMeeting/>}/>
             <Route path="/" element={<Dashboard />} />
             <Route path="*" element={<Dashboard />} />
           </Routes>
+          <EuiGlobalToastList 
+            toasts={toasts}
+            dismissToast={removeToast}
+            toastLifeTimeMs={5000}
+          />
         </EuiThemeProvider>
       </EuiProvider>
     </ThemeSelector>
