@@ -12,7 +12,7 @@ import {  EuiButton,
 import { signOut } from 'firebase/auth';
 import { firebaseAuth } from '../utils/FireBaseConfig';
 import { changeTheme } from '../app/slices/AuthSlice';
-import { getCreateMeetingBreadCrumbs, getOneonOneMeetingsBreadCrumbs } from '../utils/breadCrumbs';
+import { getCreateMeetingBreadCrumbs, getOneonOneMeetingsBreadCrumbs, getVideoConferenceBreadCrumbs } from '../utils/breadCrumbs';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -32,7 +32,10 @@ const Header = () => {
     const {pathname} = location;
     if(pathname === "/create") 
       setBreadCrumbs(getCreateMeetingBreadCrumbs(navigate));
-    else if(pathname ==="/create1on1") setBreadCrumbs(getOneonOneMeetingsBreadCrumbs(navigate))
+    else if(pathname ==="/create1on1") 
+      setBreadCrumbs(getOneonOneMeetingsBreadCrumbs(navigate));
+    else if(pathname === "/videoconference")
+      setBreadCrumbs(getVideoConferenceBreadCrumbs(navigate));
   }, [location, navigate])
 
   const invertTheme = () =>{

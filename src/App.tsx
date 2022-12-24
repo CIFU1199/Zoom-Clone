@@ -8,6 +8,7 @@ import ThemeSelector from './components/ThemeSelector';
 import CreateMeeting from './pages/CreateMeeting';
 import OneOnOneMeeting from './pages/OneOnOneMeeting';
 import { setToasts } from './app/slices/MeetingSlice';
+import VideoConference from './pages/VideoConference';
 
 
 const App = () => {
@@ -43,7 +44,7 @@ const App = () => {
   }
   const removeToast = (removeToast:{id: string}) =>{
     dispatch(setToasts(
-      toasts.filter((toast:{id:string})=> toast.id == removeToast.id)
+      toasts.filter((toast:{id:string})=> toast.id !== removeToast.id)
     ))
   }
 
@@ -55,6 +56,7 @@ const App = () => {
             <Route path="/login" element={<Login/>}/>
             <Route path="/create" element={<CreateMeeting/>}/>
             <Route path="/create1on1" element={<OneOnOneMeeting/>}/>
+            <Route path="/videoconference" element={<VideoConference/>}/>
             <Route path="/" element={<Dashboard />} />
             <Route path="*" element={<Dashboard />} />
           </Routes>
