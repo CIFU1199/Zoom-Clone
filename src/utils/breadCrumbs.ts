@@ -24,6 +24,25 @@ export const getOneonOneMeetingsBreadCrumbs= (
         onClick:()=>{navigate("/create")}
     },
     {
-        text:"Crear Reunión 1 a 1",
+        text:"Crear Reunión uno a uno",
     }
 ]
+
+
+export const getVideoConferenceBreadCrumbs= (
+    navigate:NavigateFunction) : Array<BreadCrumbsType> => [
+    {
+        text:"Dashboard",
+        href:"#",
+        onClick:()=>{navigate("/")}
+    },
+    {
+        text:"Crear Reunión",
+        href:"#",
+        onClick:()=>{navigate("/create")}
+    },
+    {
+        text:"Crear Video Conferencia",
+    }
+]
+
