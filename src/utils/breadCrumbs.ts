@@ -46,3 +46,16 @@ export const getVideoConferenceBreadCrumbs= (
     }
 ]
 
+export const getMyMeetingsBreadCrumbs = (
+    navigate:NavigateFunction) : Array<BreadCrumbsType> => [
+    {
+        text:"Dashboard",
+        href:"#",
+        onClick:()=>{navigate("/")}
+    },
+    {
+        text:"Mis Reuniones",
+    }
+]
+
+

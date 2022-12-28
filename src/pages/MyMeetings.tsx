@@ -9,35 +9,50 @@ import Header from '../components/Header';
 import { EuiBadge, EuiBasicTable, EuiButtonIcon, EuiCopy, EuiFlexGroup, EuiFlexItem, EuiPanel } from '@elastic/eui';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
+import EditFlyout from '../components/EditFlyout';
 
 const MyMeetings = () => {
     useAuth();
     const [meetings, setMeetings] = useState<any>([]);
     const userInfo = useAppSelector((zoom) => zoom.auth.userInfo);
     
-    useEffect(() => {
-        if(userInfo){
-            const getMyMeetings = async () =>{
-                const firestoreQuery = query(meetingsRef,where("createdBy","==",userInfo?.uid));
-                const fetchedMeetings = await getDocs(firestoreQuery);
+    const getMyMeetings = async () =>{
+        const firestoreQuery = query(meetingsRef,where("createdBy","==",userInfo?.uid));
+        const fetchedMeetings = await getDocs(firestoreQuery);
+        
+        if(fetchedMeetings.docs.length){
+            const myMeetings:Array<MeetingType> = []
+            fetchedMeetings.forEach((meeting)=>{
+                myMeetings.push({
+                    docId: meeting.id,
+                    ...(meeting.data() as MeetingType),
+                });
                 
-                if(fetchedMeetings.docs.length){
-                    const myMeetings:Array<MeetingType> = []
-                    fetchedMeetings.forEach((meeting)=>{
-                        myMeetings.push({
-                            docId: meeting.id,
-                            ...(meeting.data() as MeetingType),
-                        });
-                        
-                    });
-                    setMeetings(myMeetings);
-                }
-            }
-            getMyMeetings();
+            });
+            setMeetings(myMeetings);
         }
-            
+    }
+    
+
+    useEffect(() => {
+        
+
+        getMyMeetings();
     }, [userInfo]);
     
+    const [showEditFlyout, setShowEditFlyout] = useState(false);
+    const [editMeeting, setEditMeeting] = useState<MeetingType>();
+
+    const openEditFlyout = (meeting: MeetingType) =>{
+        setShowEditFlyout(true);
+        setEditMeeting(meeting);
+    }
+
+    const closeEditFlyout = (dataChanged=false) =>{
+        setShowEditFlyout(false);
+        setEditMeeting(undefined);
+        if(dataChanged) getMyMeetings();
+    }
 
     
     const columns = [
@@ -81,9 +96,7 @@ const MyMeetings = () => {
                         isDisabled={
                             !meeting.status || moment(meeting.meetingDate).isBefore(moment().format('L'))
                         }
-                        onClick={() =>{
-                            
-                        }}
+                        onClick={() => openEditFlyout(meeting)}
                     />
                 )
             }
@@ -125,6 +138,9 @@ const MyMeetings = () => {
                 </EuiPanel>
             </EuiFlexItem>
         </EuiFlexGroup>
+        {
+            showEditFlyout && <EditFlyout  closeFlyout={closeEditFlyout} meetings={editMeeting!}/>
+        }
     </div>
   )
 }
