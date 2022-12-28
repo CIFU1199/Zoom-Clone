@@ -54,7 +54,7 @@ const Dashboard = () => {
               icon={<EuiImage size="5rem" alt='icon' src={dashboard3} />}
               title={`Reuniones`}
               description="Ver las reuniones a las que está invitado"
-              onClick={() => navigate('/create')}
+              onClick={() => navigate('/meetings')}
               paddingSize="xl"
             />
           </EuiFlexItem>
