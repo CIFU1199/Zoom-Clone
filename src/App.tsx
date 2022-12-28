@@ -10,6 +10,7 @@ import OneOnOneMeeting from './pages/OneOnOneMeeting';
 import { setToasts } from './app/slices/MeetingSlice';
 import VideoConference from './pages/VideoConference';
 import MyMeetings from './pages/MyMeetings';
+import Meeting from './pages/Meeting';
 
 
 const App = () => {
@@ -59,6 +60,7 @@ const App = () => {
             <Route path="/create1on1" element={<OneOnOneMeeting/>}/>
             <Route path="/videoconference" element={<VideoConference/>}/>
             <Route path="/mymeetings" element={<MyMeetings/>}/>
+            <Route path="/meetings" element={<Meeting/>}/>
             <Route path="/" element={<Dashboard />} />
             <Route path="*" element={<Dashboard />} />
           </Routes>
