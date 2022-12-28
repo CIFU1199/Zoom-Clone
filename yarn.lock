@@ -234,10 +234,10 @@
   dependencies:
     tslib "^1.9.3"
 
-"@elastic/eui@^71.1.0":
-  version "71.1.0"
-  resolved "https://registry.yarnpkg.com/@elastic/eui/-/eui-71.1.0.tgz#e1d0db7f3c83a5ec16f8a43b45fcf6cd51a171e2"
-  integrity sha512-BpfE4hV2to+rGiqdPIpyvAjKXMd1JibS4G45DPBZMJHK2/pGKmNpOsm71iQ8924Mc4xpqKw9oXLXpsU9udHhoQ==
+"@elastic/eui@^72.0.0":
+  version "72.0.0"
+  resolved "https://registry.yarnpkg.com/@elastic/eui/-/eui-72.0.0.tgz#ba001d694c0c944143b11e5e2b756476c6a6a924"
+  integrity sha512-XMIyARp5tI5PymDT1OeYoNnto+d0NtrnRCwHUIOtwDAQamkqmfyNNt+bMzj2ii+HBA/BII5+NKCmb6HNCUBq1A==
   dependencies:
     "@types/chroma-js" "^2.0.0"
     "@types/lodash" "^4.14.160"
@@ -269,7 +269,7 @@
     rehype-stringify "^8.0.0"
     remark-breaks "^2.0.2"
     remark-emoji "^2.1.0"
-    remark-parse "^8.0.3"
+    remark-parse-no-trim "^8.0.4"
     remark-rehype "^8.0.0"
     tabbable "^5.2.1"
     text-diff "^1.0.1"
@@ -2289,10 +2289,10 @@ remark-emoji@^2.1.0:
     node-emoji "^1.10.0"
     unist-util-visit "^2.0.3"
 
-remark-parse@^8.0.3:
-  version "8.0.3"
-  resolved "https://registry.yarnpkg.com/remark-parse/-/remark-parse-8.0.3.tgz#9c62aa3b35b79a486454c690472906075f40c7e1"
-  integrity sha512-E1K9+QLGgggHxCQtLt++uXltxEprmWzNfg+MxpfHsZlrddKzZ/hZyWHDbK3/Ap8HJQqYJRXP+jHczdL6q6i85Q==
+remark-parse-no-trim@^8.0.4:
+  version "8.0.4"
+  resolved "https://registry.yarnpkg.com/remark-parse-no-trim/-/remark-parse-no-trim-8.0.4.tgz#f5c9531644284071d4a57a49e19a42ad4e8040bd"
+  integrity sha512-WtqeHNTZ0LSdyemmY1/G6y9WoEFblTtgckfKF5/NUnri919/0/dEu8RCDfvXtJvu96soMvT+mLWWgYVUaiHoag==
   dependencies:
     ccount "^1.0.0"
     collapse-white-space "^1.0.2"
@@ -2304,7 +2304,6 @@ remark-parse@^8.0.3:
     parse-entities "^2.0.0"
     repeat-string "^1.5.4"
     state-toggle "^1.0.0"
-    trim "0.0.1"
     trim-trailing-lines "^1.0.0"
     unherit "^1.0.4"
     unist-util-remove-position "^2.0.0"
@@ -2480,11 +2479,6 @@ trim-trailing-lines@^1.0.0:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/trim-trailing-lines/-/trim-trailing-lines-1.1.4.tgz#bd4abbec7cc880462f10b2c8b5ce1d8d1ec7c2c0"
   integrity sha512-rjUWSqnfTNrjbB9NQWfPMH/xRK1deHeGsHoVfpxJ++XeYXE0d6B1En37AHfw3jtfTU7dzMzZL2jjpe8Qb5gLIQ==
-
-trim@0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/trim/-/trim-0.0.1.tgz#5858547f6b290757ee95cccc666fb50084c460dd"
-  integrity sha512-YzQV+TZg4AxpKxaTHK3c3D+kRDCGVEE7LemdlQZoQXn0iennk10RsIoY6ikzAqJTc9Xjl9C1/waHom/J86ziAQ==
 
 trough@^1.0.0:
   version "1.0.5"
