@@ -18,19 +18,26 @@ A little intro about the installation.
 ```
 $ git clone https://example.com
 $ cd ../path/to/the/file
-$ npm install
+$ yarn add 
 $ npm run dev
 ```
 
-in case of conflicts with the installation use this
-```
-npm install --legacy-peer-deps <library-name>
-```
+
 
 
 ## Preview
 
-![enter image description here](https://i.ibb.co/Wpmk3Zm/Portfolio-Edward-Cifuentes.png)
+![enter image description here](https://i.ibb.co/mSrNX8r/zoom-clone-login.jpg)
+![enter image description here](https://i.ibb.co/k0wk4WJ/zoom-clone-dashboard.jpg)
+![enter image description here](https://i.ibb.co/kX0sLfc/zoom-clone-create-meeting.jpg)
+![enter image description here](https://i.ibb.co/dBRH82r/zoom-clone-create-1-on-1.jpg)
+![enter image description here](https://i.ibb.co/0DpB8dv/zoom-clone-create-video-conference.jpg)
+![enter image description here](https://i.ibb.co/C0P6MCJ/zoom-clone-my-meetings.jpg)
+![enter image description here](https://i.ibb.co/HXbWfQM/zoom-clone-edit-meeting.jpg)
+![enter image description here](https://i.ibb.co/chbpXsR/zoom-clone-all-meetings.jpg)
+![enter image description here](https://i.ibb.co/ZSKR55F/zoom-clone-join-meeting.jpg)
+![enter image description here](https://i.ibb.co/4K69Nfv/zoom-clone-meeting.jpg)
+
 
 ### Author
 
