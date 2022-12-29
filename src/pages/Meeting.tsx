@@ -70,7 +70,7 @@ const Meeting = () => {
                     }else if(moment(meeting.meetingDate).isBefore(moment().format('L'))){
                         return <EuiBadge color='default'>Terminado</EuiBadge>
                     }else{
-                        return <EuiBadge color='primary'>Terminado</EuiBadge>
+                        return <EuiBadge color='primary'>Próximos</EuiBadge>
                     }
                 }else return <EuiBadge color='danger' > Cancelado</EuiBadge>
             }
