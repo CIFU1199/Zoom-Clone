@@ -8,7 +8,7 @@ This project has two principal branches: main and dev. **main** contains the mos
 
 ## Demo
 
-If you want to see the demo of this proyect deployed, you can visit [Demo of the proyect](https://silly-scone-2e9bab.netlify.app/)
+If you want to see the demo of this proyect deployed, you can visit [Demo of the proyect](https://zoom-clone-cifu1199.netlify.app)
 
 ## Clone and Installation
 
