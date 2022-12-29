@@ -74,11 +74,14 @@ const MyMeetings = () => {
             render:(meeting:MeetingType) =>{
                 if(meeting.status) {
                     if(meeting.meetingDate === moment().format("L")){
-                        return <EuiBadge color='success'> <Link style={{color: "black"}} to={`/join/${meeting.meetingId}`}>Unete</Link> </EuiBadge>
+                        return( 
+                            <EuiBadge color='success'> 
+                                <Link style={{color: "black"}} to={`/join/${meeting.meetingId}`}>Unete</Link> 
+                            </EuiBadge>)
                     }else if(moment(meeting.meetingDate).isBefore(moment().format('L'))){
                         return <EuiBadge color='default'>Terminado</EuiBadge>
                     }else{
-                        return <EuiBadge color='primary'>Terminado</EuiBadge>
+                        return <EuiBadge color='primary'>Próximos</EuiBadge>
                     }
                 }else return <EuiBadge color='danger' > Cancelado</EuiBadge>
             }

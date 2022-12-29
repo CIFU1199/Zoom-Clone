@@ -11,6 +11,7 @@ import { setToasts } from './app/slices/MeetingSlice';
 import VideoConference from './pages/VideoConference';
 import MyMeetings from './pages/MyMeetings';
 import Meeting from './pages/Meeting';
+import JoinMeeting from './pages/JoinMeeting';
 
 
 const App = () => {
@@ -61,6 +62,7 @@ const App = () => {
             <Route path="/videoconference" element={<VideoConference/>}/>
             <Route path="/mymeetings" element={<MyMeetings/>}/>
             <Route path="/meetings" element={<Meeting/>}/>
+            <Route path="/join/:id" element={<JoinMeeting/>}/>
             <Route path="/" element={<Dashboard />} />
             <Route path="*" element={<Dashboard />} />
           </Routes>
